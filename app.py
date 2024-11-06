@@ -55,15 +55,15 @@ def selecting():
         ''')
     records = cur.fetchall()
     conn.close()
-    response_string = ""
-    response_string += "<table>"
+    response_string=""
+    response_string+="<table>"
     for player in records:
-        response_string += "<tr>"
+        response_string+="<tr>"
         for info in player:
-            response_string += "<td>{}</td>".format(info)
-        response_string += "</tr>"
-    response_string += "</table>"
-    return repsonse_string
+            response_string+="<td>{}</td>".format(info)
+        response_string+="</tr>"
+    response_string+="</table>"
+    return response_string
 
 @app.route('/db_drop')
 def dropping():
