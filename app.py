@@ -60,7 +60,19 @@ def selecting():
     for player in records:
         response_string += "<tr>"
         for info in player:
-            response_string += "<td>()</td>".format(info)
+            response_string += "<td>{}</td>".format(info)
         response_string += "</tr>"
     response_string += "</table>"
     return repsonse_string
+
+@app.route('/db_drop')
+def dropping():
+    conn = psycopg2.connect("postgresql://schwecke_lab10_database_user:4NeoO85Ipw8AavH2X3IOOflP6aOlVbfA@dpg-csluug1u0jms73b9eflg-a/schwecke_lab10_database")
+    cur = conn.cursor()
+    cur.execute('''
+        
+        DROP TABLE Basketball;
+        ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Dropped"
